@@ -3,7 +3,7 @@ def FizzBuzz max
     x = ''
     x += 'Fizz' if i%3 == 0
     x += 'Buzz' if i%5 == 0
-    puts(x.empty? ? i : x)
+    puts x.empty? ? i : x
   }
 end
 
@@ -12,6 +12,6 @@ def PrimeNumbers max
     for j in (2..i) do
       break if i%j == 0
     end
-    puts "#{i}" if i == j
+    puts i if i == j
   end
 end

@@ -1,13 +1,13 @@
-def FizzBuzz()
-  (1..100).each{ |i|
+def FizzBuzz max
+  (1..max).each{ |i|
     x = ''
-    x += 'Fizz' if i%3==0
-    x += 'Buzz' if i%5==0
+    x += 'Fizz' if i%3 == 0
+    x += 'Buzz' if i%5 == 0
     puts(x.empty? ? i : x)
   }
 end
 
-def prime_numbers max
+def PrimeNumbers max
   for i in (2..max) do
     for j in (2..i) do
       break if i%j == 0

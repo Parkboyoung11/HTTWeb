@@ -1,8 +1,8 @@
 def FizzBuzz max
   (1..max).each{ |i|
     x = ''
-    x += 'Fizz' if i%3 == 0
-    x += 'Buzz' if i%5 == 0
+    x += 'Fizz' if i%2 == 0
+    x += 'Buzz' if i%3 == 0
     puts x.empty? ? i : x
   }
 end

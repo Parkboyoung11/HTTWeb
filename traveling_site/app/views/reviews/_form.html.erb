@@ -1,0 +1,36 @@
+<div class="field">
+  <%= form_for @review do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <%= f.label :title, t("review_title") %>
+    <%= f.text_field :title, class: "form-control" %>
+    <br>
+    <%= f.text_field :hastags_list, placeholder: t("hashtags_seperate"),
+      class: "form-control" %>
+    <br>
+    <%= f.label :content, t("content") %>
+    <%= f.text_area :content, rows: 10, class: "form-control", id: "inputContent" %>
+    <br>
+    <%= f.label :image, "Image" %>
+    <%= f.file_field :image, class: "form-control", id: "image_link", accept: "image/png, image/jpeg, image/jpg" %>
+    <br>
+    <div class="form-group">
+      <img id="preview" src="" style="display: none" width="100" />
+    </div>
+    <br>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<% content_for :customscript do %>
+  <script type="text/javascript">
+    CKEDITOR.replace( 'inputContent' );
+  </script>
+  <script type="text/javascript">
+      function readURL(e) {
+        $('#preview').attr('src', e.val()).show();
+      }
+      $("#image_link").change(function () {
+          readURL($(this))
+      })
+  </script>
+<% end %>

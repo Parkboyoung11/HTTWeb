@@ -1,0 +1,93 @@
+<div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="blog_post_container">
+          <div class="blog_post">
+            <div class="blog_post_title">
+              <%= @review.title %>
+            </div>
+
+            <div class="blog_post_image">
+              <%= image_tag @review.image.url, alt: @review.title %>
+              <div class="blog_post_date d-flex flex-column
+                align-items-center justify-content-center">
+                <div class="blog_post_day">
+                  <%= @review.created_at.strftime("%e") %>
+                </div>
+                <div class="blog_post_month">
+                  <%= @review.created_at.strftime("%b %Y") %>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog_post_text">
+              <p><%= @review.content.html_safe %></p>
+            </div>
+          </div>
+            <ul class="comment-errors"></ul>
+            <div class="blog-comment">
+              <h2><%= t "comment" %></h2>
+              <% if logged_in? %>
+              <div class="pb-cmnt-container">
+                <%= form_for :comment,
+                  url: review_comments_path(:review_id => @review.id),
+                  :html => {:class => "form-inline"}, remote: true do |f| %>
+                  <%= f.text_area :body, placeholder: t("add_a_comment"),
+                    class: "box-clear" %><br/>
+                  <%= f.hidden_field :user_id, value: current_user.id, id: "user_review" %>
+                  <%= f.hidden_field :review_id, value: @review.id %>
+                  <%= f.submit t("add_comment"),
+                    class: "btn btn-primary pull-right", data: {send: "review"} %>
+                <% end %>
+              </div>
+              <hr/>
+            <% else %>
+              <%= form_for :comment,
+                  url: review_comments_path(:review_id => @review.id),
+                  :html => {:class => "form-inline"}, remote: true do |f| %>
+                <%= f.hidden_field :review_id, value: @review.id %>
+              <% end %>
+            <% end %>
+            <ul class="comments" id="comments_review">
+              <li class="clearfix">
+                <p>
+                  <%= render @review.comments.order(:created_at) %>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 sidebar_col">
+        <div class="sidebar_archives">
+          <div class="sidebar_title"><%= t "about_me" %></div>
+          <%= image_tag "https://i.imgur.com/uOoRCWt.jpg", class: "author-img" %>
+          <p><%= t "hi" %>!
+            <%= t "my_name" %>
+            <strong><%= @review.user.name %></strong>
+          </p>
+          <p><%= t "i_had" %>
+            <%= pluralize @review.user.reviews.count, t("review") %></p>
+        </div>
+
+        <div class="sidebar_categories">
+          <div class="sidebar_title"><%= t "hashtags" %></div>
+          <div class="sidebar_tags">
+            <% @review.hastags.each do |hastag| %>
+              <span>
+                <i class="fa fa-tag"></i>
+                <b>
+                  <%= link_to hastag.title,
+                    hastag_path(title: hastag.title) %>
+                </b>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="comment-modal" class="modal fade"></div>

@@ -1,0 +1,21 @@
+en:
+  base_title: "ASC_TRAVEL"
+  login: "Login"
+  register: "Register"
+  logout: "Logout"
+  home: "Home"
+  about: "About Us"
+  reviews: "Reviews"
+  create_review: "Create review"
+  trips: "Trips"
+
+vi:
+  base_title: "ASC_TRAVEL"
+  login: "Đăng nhập"
+  register: "Đăng ký"
+  logout: "Đăng xuất"
+  home: "trang chủ"
+  about: "về chúng tôi"
+  reviews: "Đánh giá"
+  trips: "Chuyến đi"
+  create_review: "Tạo đánh giá"

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t "base_title" %></title>
+    <%= render "layouts/rails_default" %>
+    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+  </head>
+
+  <body>
+    <div id="modal-window" class="modal hide fade" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
+    <%= render "layouts/header" %>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag :div, message,
+        class: "alert alert-#{message_type}" %>
+    <% end %>
+    <%= yield %>
+    <%= yield :customscript %>
+  </body>
+</html>

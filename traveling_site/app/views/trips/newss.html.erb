@@ -1,0 +1,27 @@
+<% provide :title, t("title") %>
+<% provide :button_text, t("title") %>
+<body>
+<div class="row" id="form-row">
+  <div class="col-md-4 offset-md-0">
+    <h1><%= "CreateTrip" %></h1>
+    <%= form_for @trip do |f|%>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <%= f.label :name, t("trip_name") %>
+      <%= f.text_field :name, class: "form-control"  %>
+      <%= f.label :begin, t("origin_location") %>
+      <%= f.text_field :begin, class: "form-control", placeholder: t("origin_location"), id: "origin-input" %>
+      <%= f.label :destination, t("destination_location") %>
+
+      <%= f.fields_for :place, Place.new do |ff| %>
+        <%= ff.text_field :name, class: "form-control", id: "destination-input",placeholder: t("destination_location") %>
+      <% end %>
+      <br>
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
+</body>

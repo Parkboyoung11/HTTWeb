@@ -1,0 +1,80 @@
+<% provide :title, t("home") %>
+<div class="intro">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="intro_title text-center"><%= t "intro_title" %></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1" style="height: 10px">
+        <div class="intro_text text-center">
+          <p><%= t "footer_about_content" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row intro_items">
+
+      <div class="col-lg-4 intro_col">
+        <div class="intro_item">
+          <div class="intro_item_overlay"></div>
+          <div class="intro_item_background"
+            style="background-image:url('https://goo.gl/9mYg7q')"></div>
+          <div class="intro_item_content d-flex flex-column align-items-center
+            justify-content-center">
+            <div class="button intro_button">
+              <div class="button_bcg"></div>
+              <%= link_to t("see_more"), trips_path %><span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="intro_center text-center">
+              <h1>Trips</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 intro_col">
+        <div class="intro_item">
+          <div class="intro_item_overlay"></div>
+          <div class="intro_item_background"
+            style="background-image:url('https://goo.gl/XND8zp')"></div>
+          <div class="intro_item_content d-flex flex-column align-items-center
+            justify-content-center">
+            <div class="button intro_button">
+              <div class="button_bcg"></div>
+              <%= link_to t("see_more"), reviews_path %><span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="intro_center text-center">
+              <h1>Reviews</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 intro_col">
+        <div class="intro_item">
+          <div class="intro_item_overlay"></div>
+          <div class="intro_item_background"
+            style="background-image:url('https://goo.gl/d1srRp')"></div>
+          <div class="intro_item_content d-flex flex-column align-items-center
+            justify-content-center">
+            <div class="button intro_button">
+              <div class="button_bcg"></div>
+              <%= link_to t("see_more"), "#" %><span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="intro_center text-center">
+              <h1>Places</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
